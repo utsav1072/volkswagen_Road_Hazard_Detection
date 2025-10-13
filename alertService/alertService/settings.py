@@ -69,11 +69,13 @@ ASGI_APPLICATION = 'alertService.asgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+REDIS_URL = os.environ.get('REDIS_URL')
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [os.environ.get('REDIS_URL')],
+            "hosts": [REDIS_URL],
         },
     },
 }
